@@ -1,6 +1,7 @@
 package com.example.scesi_project_marvel_mobile
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -10,21 +11,32 @@ import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
 
-    private var contador =  0
-    private lateinit var button:Button
-    private lateinit var contadorText: TextView
+    private val controller by lazy { findNavController(R.id.nav_graph_fragment) }
+    private val viewModel: StateAppViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        button = findViewById(R.id.contador_button)
-        contadorText = findViewById(R.id.contador_texto)
-        button.setOnClickListener(){
-            contador ++
-            updateText()
+
+        controller.addOnDestinationChangedListener { _,
+                                                     destination,
+                                                     _ ->
+            title = destination.label
+            viewModel.componentes.observe(this, Observer {
+                it?.let { temComponentes ->
+                    if (temComponentes.appBar) {
+                        supportActionBar?.show()
+                    } else {
+                        supportActionBar?.hide()
+                    }
+                    if (temComponentes.bottomNavigation) {
+                        bottom_nav.visibility = View.VISIBLE
+                    } else {
+                        bottom_nav.visibility = View.GONE
+                    }
+                }
+            })
         }
-    }
-    fun updateText(){
-        contadorText.text = contador.toString()
+        bottom_nav.setupWithNavController(controller)
     }
 }

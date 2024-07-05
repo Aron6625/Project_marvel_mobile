@@ -1,4 +1,5 @@
 package com.example.scesi_project_marvel_mobile
+import com.example.scesi_project_marvel_mobile.retrofit.MarvelApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
