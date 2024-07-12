@@ -1,42 +1,55 @@
 package com.example.scesi_project_marvel_mobile
 
+
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import com.projects.disav.marvelissimo.databinding.ActivityMainBinding
+import com.projects.disav.marvelissimo.ui.Startframe.FragmentStartFrame
+import com.projects.disav.marvelissimo.ui.searchresults.characters.FragmentCharacterList
+import com.projects.disav.marvelissimo.ui.searchresults.comics.FragmentComicList
 
 class MainActivity : AppCompatActivity() {
 
-    private val controller by lazy { findNavController(R.id.nav_graph_fragment) }
-    private val viewModel: StateAppViewModel by viewModel()
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        controller.addOnDestinationChangedListener { _,
-                                                     destination,
-                                                     _ ->
-            title = destination.label
-            viewModel.componentes.observe(this, Observer {
-                it?.let { temComponentes ->
-                    if (temComponentes.appBar) {
-                        supportActionBar?.show()
-                    } else {
-                        supportActionBar?.hide()
-                    }
-                    if (temComponentes.bottomNavigation) {
-                        bottom_nav.visibility = View.VISIBLE
-                    } else {
-                        bottom_nav.visibility = View.GONE
-                    }
-                }
-            })
+        setSupportActionBar(binding.toolbar)
+
+        if (savedInstanceState == null) {
+            navigateToFragment(FragmentStartFrame())
         }
-        bottom_nav.setupWithNavController(controller)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.comic_menu -> {
+                navigateToFragment(FragmentComicList())
+                true
+            }
+            R.id.character_menu -> {
+                navigateToFragment(FragmentCharacterList())
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun navigateToFragment(frag: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(binding.fragmentContent.id, frag)
+            .addToBackStack(null)
+            .commit()
     }
 }
