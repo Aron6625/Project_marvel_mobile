@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.scesi_project_marvel_mobile.databinding.ActivityMainBinding
 import com.projects.disav.marvelissimo.databinding.ActivityMainBinding
 import com.projects.disav.marvelissimo.ui.Startframe.FragmentStartFrame
 import com.projects.disav.marvelissimo.ui.searchresults.characters.FragmentCharacterList
