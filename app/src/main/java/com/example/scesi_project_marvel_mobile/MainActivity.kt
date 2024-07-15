@@ -1,10 +1,8 @@
 package com.example.scesi_project_marvel_mobile
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.example.scesi_project_marvel_mobile.R.*
 import com.example.scesi_project_marvel_mobile.startframe.FragmentStartFrame
 import com.example.scesi_project_marvel_mobile.viewmodel.character.FragmentCharacterList
@@ -42,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun navigateToFragment(frag : Fragment): Boolean{
+    fun navigateToFragment(frag: androidx.fragment.app.Fragment): Boolean{
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(id.fragment_content, frag)
         transaction.addToBackStack(null)

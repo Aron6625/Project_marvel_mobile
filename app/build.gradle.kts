@@ -54,6 +54,8 @@ dependencies {
     implementation("com.android.support:cardview-v7:28.0.0")
     implementation("com.android.support:recyclerview-v7:28.0.0")
     implementation("com.squareup.picasso:picasso:2.5.2")
+    implementation ("androidx.appcompat:appcompat:1.3.1")
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
     androidTestImplementation("com.android.support.test:rules:1.0.2")
     androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.2")
     implementation(libs.androidx.core.ktx)
