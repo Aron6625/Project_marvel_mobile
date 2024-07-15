@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
 import android.widget.TextView
-import com.projects.disav.marvelissimo.R
+import com.example.scesi_project_marvel_mobile.R
+
 
 class AdapterExpandableListView internal constructor(private val context: Context, private val titleList: List<String>, private val dataList: HashMap<String, MutableList<String>>) : BaseExpandableListAdapter() {
 

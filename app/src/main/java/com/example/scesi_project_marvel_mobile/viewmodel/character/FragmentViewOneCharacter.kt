@@ -12,12 +12,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ExpandableListView
 import android.widget.Toast
-import com.projects.disav.marvelissimo.R
-import com.projects.disav.marvelissimo.network.api.MarvelHandler
-import com.projects.disav.marvelissimo.network.api.dto.characters.Character
-import com.projects.disav.marvelissimo.network.api.dto.characters.CharacterDataContainer
-import com.projects.disav.marvelissimo.network.api.dto.characters.CharacterDataWrapper
-import com.projects.disav.marvelissimo.ui.searchresults.viewoneresult.AdapterExpandableListView
+import com.example.scesi_project_marvel_mobile.R
+import com.example.scesi_project_marvel_mobile.model.MarvelHandler
+import com.example.scesi_project_marvel_mobile.viewmodel.AdapterExpandableListView
 import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
