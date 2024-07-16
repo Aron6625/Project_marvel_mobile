@@ -34,7 +34,7 @@ class FragmentCharacterList : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = RecyclerviewBinding.inflate(inflater, container, false)
-        setHasOptionsMenu(true)
+//        setHasOptionsMenu(true)
         (activity as? AppCompatActivity)?.supportActionBar?.show()
 
         linearLayoutManager = LinearLayoutManager(activity)
@@ -67,7 +67,7 @@ class FragmentCharacterList : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
+//        setHasOptionsMenu(true)
     }
 
     @Suppress("DEPRECATION")
@@ -107,7 +107,7 @@ class FragmentCharacterList : Fragment() {
 
     @SuppressLint("CheckResult")
     private fun getCharactersNameStartBy(query: String, offset: Int = 0) {
-        MarvelHandler.service.getCharactersByNameStartingWith(query.toLowerCase(Locale.ROOT), offset)
+        MarvelHandler.service.getCharactersByNameStartingWith(query.lowercase(Locale.ROOT), offset)
             .subscribeOn(Schedulers.io())
             .retry(10)
             .onErrorReturn {

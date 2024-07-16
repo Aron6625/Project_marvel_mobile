@@ -9,8 +9,11 @@ import android.widget.BaseExpandableListAdapter
 import android.widget.TextView
 import com.example.scesi_project_marvel_mobile.R
 
-
-class AdapterExpandableListView internal constructor(private val context: Context, private val titleList: List<String>, private val dataList: HashMap<String, MutableList<String>>) : BaseExpandableListAdapter() {
+class AdapterExpandableListView internal constructor(
+    private val context: Context,
+    private val titleList: List<String>,
+    private val dataList: HashMap<String, MutableList<String>>
+) : BaseExpandableListAdapter() {
 
     override fun getChild(listPosition: Int, expandedListPosition: Int): Any {
         return this.dataList[this.titleList[listPosition]]!![expandedListPosition]
@@ -20,8 +23,10 @@ class AdapterExpandableListView internal constructor(private val context: Contex
         return expandedListPosition.toLong()
     }
 
-    override fun getChildView(listPosition: Int, expandedListPosition: Int, isLastChild: Boolean, convertView: View?, parent: ViewGroup): View {
-        var convertView = convertView
+    override fun getChildView(
+        listPosition: Int, expandedListPosition: Int, isLastChild: Boolean, view: View?, parent: ViewGroup
+    ): View {
+        var convertView = view
         val expandedListText = getChild(listPosition, expandedListPosition) as String
         if (convertView == null) {
             val layoutInflater = this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -48,8 +53,8 @@ class AdapterExpandableListView internal constructor(private val context: Contex
         return listPosition.toLong()
     }
 
-    override fun getGroupView(listPosition: Int, isExpanded: Boolean, convertView: View?, parent: ViewGroup): View {
-        var convertView = convertView
+    override fun getGroupView(listPosition: Int, isExpanded: Boolean, view: View?, parent: ViewGroup): View {
+        var convertView = view
         val listTitle = getGroup(listPosition) as String
         if (convertView == null) {
             val layoutInflater = this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

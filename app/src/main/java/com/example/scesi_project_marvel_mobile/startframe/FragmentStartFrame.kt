@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.scesi_project_marvel_mobile.MainActivity
 import com.example.scesi_project_marvel_mobile.databinding.StartViewBinding
 import com.example.scesi_project_marvel_mobile.viewmodel.character.FragmentCharacterList
@@ -22,18 +23,12 @@ class FragmentStartFrame : Fragment() {
         _binding = StartViewBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        (activity as AppCompatActivity).supportActionBar!!.hide()
+        (activity as? AppCompatActivity)?.supportActionBar?.hide()
 
         binding.characterBg.setOnClickListener {
             val activity = activity as MainActivity
             activity.navigateToFragment(FragmentCharacterList())
         }
-
-        // Si necesitas manejar otros botones, puedes descomentar y actualizar esta sección
-        // binding.comicBg.setOnClickListener {
-        //     val activity = activity as MainActivity
-        //     activity.navigateToFragment(FragmentComicList())
-        // }
 
         return view
     }
