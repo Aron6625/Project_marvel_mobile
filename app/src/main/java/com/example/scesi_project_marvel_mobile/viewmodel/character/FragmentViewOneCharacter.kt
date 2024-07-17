@@ -43,7 +43,9 @@ class FragmentViewOneCharacter : Fragment() {
         val id = requireArguments().getInt("index")
         var url = ""
 
-        (activity as AppCompatActivity).supportActionBar!!.hide()
+//        (activity as AppCompatActivity).supportActionBar!!.hide()
+        (activity as? AppCompatActivity)?.supportActionBar?.hide()
+
 
         val expandableListView = binding.expandableListView
 
@@ -92,12 +94,12 @@ class FragmentViewOneCharacter : Fragment() {
     private fun getData(character: Character): HashMap<String, MutableList<String>> {
         val comicList: MutableList<String> = mutableListOf()
         val seriesList: MutableList<String> = mutableListOf()
-        // for (item in character.comics.items) {
-        //     comicList.add(item.name)
-        // }
-        // for (item in character.series.items) {
-        //     seriesList.add(item.name)
-        // }
+         for (item in character.comics.items) {
+             comicList.add(item.name)
+         }
+         for (item in character.series.items) {
+             seriesList.add(item.name)
+         }
 
         val mapOfCharacterExpLv = HashMap<String, MutableList<String>>()
         mapOfCharacterExpLv["Comics"] = comicList

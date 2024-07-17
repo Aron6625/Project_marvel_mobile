@@ -48,7 +48,7 @@ class RecyclerAdapterCharacter(
         fun bindCharacter(character: Character, clickListener: (Character) -> Unit) {
             this.character = character
             val uri = "${character.thumbnail.path}.${character.thumbnail.extension}"
-            println("Image URL: $uri")
+//            println("Image URL: $uri")
             Picasso.with(binding.root.context).load(uri)
                 .error(R.mipmap.ic_launcher)
                 .into(binding.characterImageRecyclerview, object : com.squareup.picasso.Callback {
