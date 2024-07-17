@@ -43,7 +43,6 @@ class FragmentViewOneCharacter : Fragment() {
         val id = requireArguments().getInt("index")
         var url = ""
 
-//        (activity as AppCompatActivity).supportActionBar!!.hide()
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
 
 
@@ -79,14 +78,7 @@ class FragmentViewOneCharacter : Fragment() {
                 createExpandableLv(getData(character), expandableListView)
             }
 
-        binding.goToWebsite.setOnClickListener {
-            val uris = Uri.parse(url)
-            val intents = Intent(Intent.ACTION_VIEW, uris)
-            val b = Bundle()
-            b.putBoolean("new_window", true)
-            intents.putExtras(b)
-            view.context.startActivity(intents)
-        }
+
 
         return view
     }

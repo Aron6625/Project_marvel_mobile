@@ -2,11 +2,11 @@ package com.example.scesi_project_marvel_mobile.viewmodel.character
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.appcompat.widget.SearchView
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.scesi_project_marvel_mobile.MainActivity
 import com.example.scesi_project_marvel_mobile.R
@@ -17,7 +17,7 @@ import com.example.scesi_project_marvel_mobile.model.characters.CharacterDataCon
 import com.example.scesi_project_marvel_mobile.model.characters.CharacterDataWrapper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.util.Locale
+import java.util.*
 
 class FragmentCharacterList : Fragment() {
 
@@ -34,7 +34,7 @@ class FragmentCharacterList : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = RecyclerviewBinding.inflate(inflater, container, false)
-//        setHasOptionsMenu(true)
+        setMenuVisibility(true)
         (activity as? AppCompatActivity)?.supportActionBar?.show()
 
         linearLayoutManager = LinearLayoutManager(activity)
@@ -67,12 +67,11 @@ class FragmentCharacterList : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setHasOptionsMenu(true)
+        setHasOptionsMenu(true) 
     }
 
-    @Suppress("DEPRECATION")
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        super.onPrepareOptionsMenu(menu)
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu, menu)
         val searchItem = menu.findItem(R.id.search)
         val searchView = searchItem?.actionView as? SearchView
 
