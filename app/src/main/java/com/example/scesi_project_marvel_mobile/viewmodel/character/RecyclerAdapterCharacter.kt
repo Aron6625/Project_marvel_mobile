@@ -1,5 +1,6 @@
 package com.example.scesi_project_marvel_mobile.viewmodel.character
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,14 +48,18 @@ class RecyclerAdapterCharacter(
         fun bindCharacter(character: Character, clickListener: (Character) -> Unit) {
             this.character = character
             val uri = "${character.thumbnail.path}.${character.thumbnail.extension}"
+            println("Image URL: $uri")
             Picasso.with(binding.root.context).load(uri)
                 .error(R.mipmap.ic_launcher)
                 .into(binding.characterImageRecyclerview, object : com.squareup.picasso.Callback {
                     override fun onSuccess() {
+//                        binding.characterImageRecyclerview.visibility = (View.GONE)
                         binding.progressCharacterImage.visibility = View.GONE
                     }
 
-                    override fun onError() {}
+                    override fun onError() {
+
+                    }
                 })
             binding.characterName.text = character.name
             binding.root.setOnClickListener { clickListener(character) }
