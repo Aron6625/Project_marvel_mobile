@@ -13,7 +13,7 @@
         android:id="@+id/fragment_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="#4E5860">
+        android:background="#2c2c2c">
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
