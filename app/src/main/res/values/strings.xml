@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Scesi Project marvel api</string>
-    <string name="api_key">490e9405e90d6cdf7f823da1d81c7972</string>
-    <string name="hash">52e42a722bdb19550e304cd646af3fbc</string>
+    <string name="api_key">996927ca470f08c9924720b357b00001</string>
+    <string name="hash">b0ed8cb7e03ebfb5888028692f03c271</string>
     <string name="character_image_desc">Character Image</string>
 </resources>
